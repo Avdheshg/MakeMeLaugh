@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <title>Make Me Laugh</title>
+</head>
+
+<body>
+
+    <article class="formSelection area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <form class="form" action="/" method="POST">
+
+            <article class="quadrant-design">
+                <div class="quadrant"></div>
+            </article>
+
+            <!-- Categories -->
+            <div class="categories selection">
+                <h4>Select Category/Categories</h4>
+                <div class="container">
+                    <input class="checkbox" type="checkbox" id="programming" name="programming">
+                    <label for="programming">Programming</label>
+
+                    <input type="checkbox" id="mis" name="mis">
+                    <label for="mis">Mis</label>
+
+                    <input type="checkbox" id="dark" name="dark">
+                    <label for="dark">Dark</label>
+
+                    <input type="checkbox" id="pun" name="pun">
+                    <label for="pun">Pun</label>
+
+                    <input type="checkbox" id="spooky" name="spooky">
+                    <label for="spooky">Spooky</label>
+
+                    <input type="checkbox" id="christmas" name="christmas">
+                    <label for="christmas">Christmas</label>
+                </div>
+
+            </div>
+
+
+            <!-- Blackist Flags -->
+            <div class="blackListFlages selection">
+                <h4>Select Blackist Flags</h4>
+                <div class="container">
+                    <input type="checkbox" id="nsfw" name="nsfw">
+                    <label for="nsfw">nsfw</label>
+
+                    <input type="checkbox" id="religious" name="religious">
+                    <label for="religious">Religious</label>
+
+                    <input type="checkbox" id="political" name="political">
+                    <label for="political">Political</label>
+
+                    <input type="checkbox" id="racist" name="racist">
+                    <label for="racist">Racist</label>
+                </div>
+
+            </div>
+
+
+            <!-- Joke Type -->
+            <div class="jokeType selection">
+                <h4>Select Type of Joke</h4>
+                <div class="container">
+                    <input type="checkbox" id="single" name="single" checked>
+                    <label for="single">Single</label>
+
+                    <input type="checkbox" id="twoPart" name="twoPart" checked>
+                    <label for="twoPart">Two Part</label>
+                </div>
+
+            </div>
+
+            <!-- Searching  -->
+            <div class="searchString selection">
+                <h4>Enter String</h4>
+                <div class="container">
+                    <label for="searchString">Search for a joke that
+                        contains this search string:</label>
+                    <input class="search-string" type="text" id="searchString" name="searchString" placeholder="Enter String">
+                </div>
+
+
+            </div>
+
+            <!-- Number of Jokes -->
+            <!-- <label for="jokesNum">Amount of Jokes </label>
+            <input type="number" id="jokesNum" name="jokesNum" value="1"> -->
+
+            <!-- <br> -->
+            <div class="button">
+                <button class="get-joke" type="submit">Get Joke</button>
+            </div>
+
+        </form>
+
+    </article>
+
+    <!-- <div> -->
+    <% for (var i = 0; i < sendArray.length; i++) %>
+        <p>  <%= sendArray[i] %>   </p> 
+    <% }  %>
+    <!-- </div> -->
+
+
+
+    <!-- 
+        <div class="completion">
+        <div class="completion-child">100%</div>
+    </div>
+
+        .completion {
+    position: relative;
+    background-color: #989898;
+    width: 40px;
+    border-radius: 5px;
+    font-weight: 500;
+    padding-top: 6px;
+    padding-left: 6px;
+}
+     -->
+
+</body>
+
+</html>
+
+
+
+
+
+
