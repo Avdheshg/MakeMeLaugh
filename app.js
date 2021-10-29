@@ -12,12 +12,11 @@ const { type } = require("os");
     Attatch MEME API
 
 */
+
 const app = express();
 
 // Tell app(express) to use EJS
-// app.set('view engine', 'ejs');
-
-var jokeArray = [];
+app.set('view engine', 'ejs');
 
 // Using the CSS file
 app.use(express.static("public"));
@@ -25,10 +24,16 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended : true}));
 
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/index.html");
+    // res.sendFile(__dirname + "/index.html");
 
-    // res.render("joke", {sendArray: jokeArray});      // not working
+    console.log("Joke Array ==============");
+    console.log(jokeArray);
+
+    res.render('newJoke', {jokeTypeHTML: jokeType, jokeArrayHTML: jokeArray});      // not working
 });
+
+var jokeArray = [];
+let jokeType = "";
 
 app.post("/", function(req, res) {
     const programming = req.body.programming;
@@ -120,12 +125,6 @@ app.post("/", function(req, res) {
 
     url += "?";
     console.log(url);
-
-    /**
-     * Nothing selected
-     * type = single or two part
-     */
-
 
     /** ====== Adding Flags ================= 
      * ===================================== */
@@ -220,7 +219,11 @@ app.post("/", function(req, res) {
     // if (amount > 1)
     //     console.log(dataAsJSON.jokes[0].setup);
 
+    jokeArray = []; 
+
     https.get(url, function(response) {
+
+        const arr = [];
 
         response.on('data', function(d) { 
             // console.log(d);
@@ -229,52 +232,59 @@ app.post("/", function(req, res) {
 
             // console.log(dataAsJSON.type);
             const sendType = dataAsJSON.type;
-            // console.log(sendType); 
-     
-            // for (var i = 0; i < jokesNum; i++){  
-                // console.log(dataAsJSON.jokes[i].joke);
-                // console.log((i+1) + ".");
-                // var joke = dataAsJSON.jokes[i].joke;
-                    // console.log(joke);
-                    // res.write("<p>" + joke); 
-                    // console.log(url);
+            console.log("Category " +  dataAsJSON.category);
 
-                res.write("<p>Category : " + dataAsJSON.category);
-                // type = twoPart
-                if (sendType === "single") { 
-                    console.log("single send");
-                    var joke = dataAsJSON.joke;
-                    // console.log(joke);
-                    res.write("<p>Joke : " + joke);
-                    
-                    // jokeArray.push(joke);
-                }
-
-                if (sendType === "twopart") {
-                    console.log("twopart sedn");
-                    var setup = dataAsJSON.setup;
-                    var delivery = dataAsJSON.delivery;
-                    // console.log(setup + "\n" + delivery);
-                    res.write("<p>Setup : " + setup);
-                    res.write("<p>Delivery : " + delivery);
-                    
-                    
-                    // jokeArray.push(setup);
-                    // jokeArray.push(delivery);
-                }
-                // console.log("\n");
-            // }
-            // type = single
+            arr.push(dataAsJSON.category);
+            // jokeType = sendType;
             
-        })
-    }) 
+            // res.write("<p>Category : " + dataAsJSON.category);
+            // type = twoPart
+            if (sendType === "single") { 
+                console.log("single send");
+                var joke = dataAsJSON.joke;
+                console.log(joke);
+                // res.write("<p>Joke : " + joke);
+                
+                jokeType = 1;
+                arr.push(joke);
+            }
 
-    // res.redirect("/");
+            if (sendType === "twopart") {
+                console.log("twopart sedn");
+                var setup = dataAsJSON.setup;
+                var delivery = dataAsJSON.delivery;
+                console.log(setup + "\n" + delivery);
+                // res.write("<p>Setup : " + setup);
+                // res.write("<p>Delivery : " + delivery);
+                
+                
+                arr.push(setup);
+                arr.push(delivery);
+                jokeType = 2;
+            }
+
+                // console.log("JokeArray[0] \t" + jokeArray[0]);
+                // console.log("JokeArray[1] \t" + jokeArray[1]);
+                // console.log("arr " + jokeType);
+                // console.log(typeof jokeType);
+           
+                jokeArray.push(arr);
+                res.redirect("/");
+
+                if (jokeArray[0][1] !== undefined) {
+                    console.log("====works fine======");
+                    // console.log(jokeArray[0][1]);
+                }
+        });
+    }); 
+
+    // console.log(jokeArray);
+    // res.render("joke");
 
 })
+    // console.log(jokeArray[0][1]);
 
-
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
     console.log("Server is running on port 3000");
 });
 

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,19 +17,21 @@
 
 <body>
 
+    <!-- Background Animation -->
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    
     <article class="formSelection area">
-        <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
 
         <form class="form" action="/" method="POST">
 
@@ -113,10 +115,9 @@
             <div class="searchString selection">
                 <h4>Enter String</h4>
                 <div class="container">
-                    <label class="search-label" for="searchString">Search for a joke that
+                    <label for="searchString">Search for a joke that
                         contains this search string:</label>
-                    <input class="search-string" type="text" id="searchString" name="searchString"
-                        placeholder="Enter String">
+                    <input class="search-string" type="text" id="searchString" name="searchString" placeholder="Enter String">
                 </div>
 
 
@@ -133,38 +134,27 @@
 
         </form>
 
+        <!-- Adding Fynamic content -->
         <section class="new-joke">
 
-            <!-- <h1 class="logo">MakeMeLaugh</h1> -->
+            <div class="jokes-container">
+                <!-- Checking that the current type is single or 2 type -->
+                                                   
+                <% if (jokeArrayHTML[0][2] !== undefined) {   %>
+                    <p> Setup: <%= jokeArrayHTML[0][1] %> </p>
+                    <p> Delivery: <%= jokeArrayHTML[0][2] %> </p>
+                <% } else { %>
+                    <p> Joke: <%= jokeArrayHTML[0][1] %> </p>
+
+                <% } %>
+            </div>
             
-            <p>Para 1</p>
-            <p>Para 2</p>
 
         </section>
 
-    </article>
-
-    <article class="new-joke">
         
+
     </article>
-
-
-
-    <!-- 
-        <div class="completion">
-        <div class="completion-child">100%</div>
-    </div>
-
-        .completion {
-    position: relative;
-    background-color: #989898;
-    width: 40px;
-    border-radius: 5px;
-    font-weight: 500;
-    padding-top: 6px;
-    padding-left: 6px;
-}
-     -->
 
 </body>
 

@@ -12,7 +12,16 @@ body {
 }
 
 .formSelection {
+    /* padding: 4em;
+    color: #fff;
+    font-size: 1.2em;
+    
+    width: 60em; */
+    /* background-color: #3e1f92; */
     display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    /* height: 100vh; */
 }
 
 .form {
@@ -26,7 +35,7 @@ body {
     border-radius: 5px;
     position: relative;
     z-index: 10;
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 
     transition: all .4s ease; 
 }
@@ -127,27 +136,6 @@ label {
     cursor: pointer;
 }
 
-.new-joke {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    width: 20em;
-    font-size: 1.2em;
-    /* background-color: #2bb342; */
-}
-
-/* --- Logo --------- */
-.logo {
-    font-size: 3em;
-    padding-right: .5em;
-    text-decoration:underline;
-    color: #2b31b3;
-    display: flex;
-    justify-content: flex-end;
-}
-
 /* ==== Quadrant ===== */
 .quadrant-design {
     position: relative;
@@ -168,15 +156,33 @@ label {
 }
 
 .new-joke {
-    /* margin-top: 9em; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 20em;
+    background-color: #2bb342;
+    font-size: 1.2em;
 }
 
 .logo {
-    font-size: 2em;
+    font-size: 3em;
+    padding-right: .5em;
+    text-decoration:underline;
+    color: #2b31b3;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.jokes-container {
+    display: flex;
+    align-items: center;
+    background-color: #2bb342 ;
 }
 
 
-/* ------------ Background Animation ------------ */
+/* Background Animation */
 .area {
     /* background: #4e54c8;   */
     background: #e4e4e7;
