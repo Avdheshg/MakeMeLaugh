@@ -5,14 +5,6 @@ const { type } = require("os");
 
 // const colors = require("colors");
 
-/*  ======== Errors
-    1. When none of the type of joke is selected then it chooses both
-    2. When amount is entered => gives error
-
-    Attatch MEME API
-
-*/
-
 const app = express();
 
 // Tell app(express) to use EJS
@@ -23,17 +15,15 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({extended : true}));
 
-app.get("/", function(req, res) {
-    // res.sendFile(__dirname + "/index.html");
-
-    console.log("Joke Array ==============");
-    console.log(jokeArray);
-
-    res.render('newJoke', {jokeTypeHTML: jokeType, jokeArrayHTML: jokeArray});      // not working
-});
-
 var jokeArray = [];
 let jokeType = "";
+let isPost = false;
+
+app.get("/", function(req, res) {
+
+    res.render('newJoke', {isPostHTML: isPost, jokeTypeHTML: jokeType, jokeArrayHTML: jokeArray});    
+});
+
 
 app.post("/", function(req, res) {
     const programming = req.body.programming;
@@ -167,12 +157,13 @@ app.post("/", function(req, res) {
         }
         // console.log(url);
     }
+
     // Ommiting sexist
-    if (flagSeperator) {
-        url += ",sexist"
-    } else {
-        url += "blacklistFlags=" + "sexist&"
-    }
+    // if (flagSeperator) {
+    //     url += ",sexist"
+    // } else {
+    //     url += "blacklistFlags=" + "sexist&"
+    // }
 
     // Editing the URL
     if (flagSeperator) {
@@ -216,14 +207,11 @@ app.post("/", function(req, res) {
     // console.log(jokesNum);
     console.log(url);
 
-    // if (amount > 1)
-    //     console.log(dataAsJSON.jokes[0].setup);
-
     jokeArray = []; 
 
     https.get(url, function(response) {
 
-        const arr = [];
+        const arr = [];      
 
         response.on('data', function(d) { 
             // console.log(d);
@@ -234,11 +222,10 @@ app.post("/", function(req, res) {
             const sendType = dataAsJSON.type;
             console.log("Category " +  dataAsJSON.category);
 
+            // Adding joketype and url to array
             arr.push(dataAsJSON.category);
-            // jokeType = sendType;
-            
-            // res.write("<p>Category : " + dataAsJSON.category);
-            // type = twoPart
+            arr.push(url);
+
             if (sendType === "single") { 
                 console.log("single send");
                 var joke = dataAsJSON.joke;
@@ -246,7 +233,7 @@ app.post("/", function(req, res) {
                 // res.write("<p>Joke : " + joke);
                 
                 jokeType = 1;
-                arr.push(joke);
+                arr.push(joke);   // 2  
             }
 
             if (sendType === "twopart") {
@@ -254,35 +241,21 @@ app.post("/", function(req, res) {
                 var setup = dataAsJSON.setup;
                 var delivery = dataAsJSON.delivery;
                 console.log(setup + "\n" + delivery);
-                // res.write("<p>Setup : " + setup);
-                // res.write("<p>Delivery : " + delivery);
                 
                 
                 arr.push(setup);
                 arr.push(delivery);
                 jokeType = 2;
             }
-
-                // console.log("JokeArray[0] \t" + jokeArray[0]);
-                // console.log("JokeArray[1] \t" + jokeArray[1]);
-                // console.log("arr " + jokeType);
-                // console.log(typeof jokeType);
            
-                jokeArray.push(arr);
-                res.redirect("/");
+            jokeArray.push(arr);
+            isPost = true;
+            console.log("jokeType : " + jokeType);
+            res.redirect("/");
 
-                if (jokeArray[0][1] !== undefined) {
-                    console.log("====works fine======");
-                    // console.log(jokeArray[0][1]);
-                }
         });
     }); 
-
-    // console.log(jokeArray);
-    // res.render("joke");
-
-})
-    // console.log(jokeArray[0][1]);
+});
 
 app.listen(process.env.PORT || 3000, function() {
     console.log("Server is running on port 3000");
@@ -290,7 +263,10 @@ app.listen(process.env.PORT || 3000, function() {
 
 
 
-
+/**
+ 
+ * 
+ */
 
 
 

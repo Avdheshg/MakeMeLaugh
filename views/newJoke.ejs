@@ -17,6 +17,9 @@
 
 <body>
 
+    
+    <!-- <h1><a class="logo" href="#">MakeMeLaugh</a></h1> -->
+
     <!-- Background Animation -->
     <ul class="circles">
         <li></li>
@@ -137,25 +140,41 @@
         <!-- Adding Fynamic content -->
         <section class="new-joke">
 
-            <div class="jokes-container">
-                <!-- Checking that the current type is single or 2 type -->
-                                                   
-                <% if (jokeArrayHTML[0][2] !== undefined) {   %>
-                    <p> Setup: <%= jokeArrayHTML[0][1] %> </p>
-                    <p> Delivery: <%= jokeArrayHTML[0][2] %> </p>
-                <% } else { %>
-                    <p> Joke: <%= jokeArrayHTML[0][1] %> </p>
+            <header class="header"><a class="logo" href="#">MakeMeLaugh</a></header>
+
+            <div class="joke-feature-container">
+                <% if (isPostHTML === true) { %>
+                    <div class="joke-text">
+
+                        <% if (jokeArrayHTML[0][0] !== undefined) {   %>
+                            <p> Category: <%= jokeArrayHTML[0][0] %>    </p>
+
+                            <% if (jokeTypeHTML === 1) {   %>
+                                <p> Joke: <%= jokeArrayHTML[0][2] %> </p>
+                            <% } else { %>
+
+                                <p class="dual-p1"> Setup: <%= jokeArrayHTML[0][2] %> </p>
+                                <p> Delivery: <%= jokeArrayHTML[0][3] %> </p>
+                            <% } %>
+
+                        <% } else { %>
+                            <p>No matching joke found</p>
+                        <% } %>
+                    </div>
+
+                    <div class="url">
+                        <p> Joke URL :    <%= jokeArrayHTML[0][1] %>  </p>
+                    </div>
 
                 <% } %>
             </div>
             
-
-        </section>
-
-        
+        </section>       
 
     </article>
 
 </body>
+
+
 
 </html>

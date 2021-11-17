@@ -12,33 +12,74 @@ body {
 }
 
 .formSelection {
-    /* padding: 4em;
-    color: #fff;
-    font-size: 1.2em;
-    
-    width: 60em; */
-    /* background-color: #3e1f92; */
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
-    /* height: 100vh; */
+    padding: 2em;
 }
 
+/* form */
 .form {
-    padding: 3em;
-    margin: 2em;
+    /* margin: 2em; */
     background-color: #3e1f92;
     color: #fff;
     font-size: 1.2em;
-    height: 90vh;
-    width: 40em;
     border-radius: 5px;
+
+    /* height: 90vh; */
+    padding: 3em;
+    width: 45%;
     position: relative;
     z-index: 10;
-    /* overflow: hidden !important; */
+    overflow: hidden !important;
 
     transition: all .4s ease; 
 }
+
+/* Dynamic  */
+.new-joke {
+    /* background-color: #2bb342; */
+    /* change z-index of circles */
+    font-size: 1.2em;
+
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.header {
+    /* background-color: #c84e95; */
+    text-align: right;
+}
+
+.logo {
+    font-size: 3em;
+    text-decoration:underline;
+    color: #2b31b3;
+}
+
+.joke-feature-container {
+    /* background-color: #fa949d; */
+    padding: 4em;
+    margin-top: 5em;
+    
+    /* display: flex;
+    flex-direction: column; */
+
+    position: relative;
+    min-width: 50em;
+}
+
+.joke-type {
+    /* background-color: aqua; */
+    /* margin-bottom: 1em; */
+   
+}
+
+.joke-text {
+    position: absolute;
+    margin-top: 2em;
+    /* background-color: #2c72b5 ; */
+}
+
+
 
 .form:hover {
     box-shadow: -2px 6px 17px 1px rgba(0, 0, 0, 0.75);
@@ -65,12 +106,6 @@ form button {
 
 .blackListFlages, .jokeType {
     margin-top: 1.5em;
-}
-
-.search-label {
-    /* margin-bottom: 5em; */
-    /* padding: 1em; */
-    /* background-color: red; */
 }
 
 .search-string {
@@ -125,6 +160,7 @@ label {
     margin: 2em 0;
 }
 
+/* Get joke button */
 .get-joke {
     background-color: #fa949d;
     color: #fff;
@@ -142,6 +178,7 @@ label {
     /* z-index: 5 ; */
 }
 
+
 .quadrant {
     padding: 5em;
     width: 25em;
@@ -155,31 +192,7 @@ label {
     top: 15em;
 }
 
-.new-joke {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    width: 20em;
-    background-color: #2bb342;
-    font-size: 1.2em;
-}
 
-.logo {
-    font-size: 3em;
-    padding-right: .5em;
-    text-decoration:underline;
-    color: #2b31b3;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.jokes-container {
-    display: flex;
-    align-items: center;
-    background-color: #2bb342 ;
-}
 
 
 /* Background Animation */
